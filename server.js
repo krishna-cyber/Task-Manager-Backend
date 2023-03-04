@@ -26,10 +26,13 @@ app.use("/tasks", routes);
 //Database connection and server listening
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://taskmanager:taskmanager123@cluster0.ckqfymf.mongodb.net/Task-Manager?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then((conn) => {
     console.log(`Database connected on ${conn.connection.host}`);
     app.listen(process.env.PORT, () => {
